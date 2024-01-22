@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo List</title>
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <main class="container">
+            <h1>Todo List</h1>
+
+            <form>
+                <div class="grupo-input">
+                    <label for="nome-atividade"> Nova atividade: </label>
+                    <input type="text" />
+                </div>
+                <button type="button" class="btn">Adicionar atividade</button>
+            </form>
+            <ul class="lista-tarefas">
+                <li class="tarefa">
+                    <button class="atividade">
+                        <h2>01</h2>
+                        <p>Programação</p>
+                        <span class="estado nao-iniciado">Não iniciado</span>
+                    </button>
+                </li>
+                <li class="tarefa">
+                    <button class="atividade">
+                        <h2>02</h2>
+                        <p>Estudar</p>
+                        <span class="estado andamento">Em andamento</span>
+                    </button>
+                </li>
+            </ul>
+        </main>
+    </body>
+</html>

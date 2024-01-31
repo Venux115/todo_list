@@ -1,7 +1,7 @@
-import View from "./View.mjs"
+import View from "./View.mjs";
 
 export default class AtividadeView extends View {
-    _template(model) {
+    template(model) {
         return `<section class="modal">
         <form class="form form-atividade">
             <button type="button" class="btn-close">
@@ -42,10 +42,10 @@ export default class AtividadeView extends View {
                 <button type="button" class="btn btn-excluir">Excluir</button>
             </div>
         </form>
-    </section>`
+    </section>`;
     }
 
     desrenderizar(model) {
-        this._elemento.innerHTML -= this._template(model)
+        this._elemento.innerHTML -= this._template(model);
     }
 }

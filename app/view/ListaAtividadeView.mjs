@@ -1,8 +1,8 @@
-import View from "./View.mjs"
+import View from "./View.mjs";
 
 export default class ListaAtividadeView extends View {
-    _template(model) {
-        let html = ""
+    template(model) {
+        let html = "";
 
         model.forEach((tarefa) => {
             html += `
@@ -13,8 +13,8 @@ export default class ListaAtividadeView extends View {
                     <span class="estado ${tarefa.estado}">${tarefa.estado}</span>
                 </button>
             </li>
-            `
-        })
-        return html
+            `;
+        });
+        return html;
     }
 }

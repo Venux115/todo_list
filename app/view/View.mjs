@@ -1,9 +1,11 @@
 export default class View {
+    #elemento;
+
     constructor(elemento) {
-        this._elemento = elemento
+        this.#elemento = elemento;
     }
 
     renderizar(model) {
-        this._elemento.innerHTML = this._template(model)
+        this.#elemento.innerHTML = this.template(model);
     }
 }

@@ -1,72 +1,87 @@
-import Atividade from "../model/Atividade.mjs"
-import AtividadeView from "../view/AtividadeView.mjs"
-import FormController from "./FormController.js"
-import ListaAtividadeController from "./ListaAtividadesController.mjs"
+import Atividade from "../model/Atividade.mjs";
+import AtividadeView from "../view/AtividadeView.mjs";
+import FormController from "./FormController.js";
 
 export default class AtividadeController {
+    #atividade;
+    #atividadeView;
+    #formController;
+    #lista;
+    
     constructor(lista, { id, titulo, estado, descricao }) {
-        this._atividade = new Atividade(id, titulo, estado, descricao)
-        this._atividadeView = new AtividadeView(document.querySelector(".base"))
-        this._lista = lista
+        this.#atividade = new Atividade(id, titulo, estado, descricao);
+        this.#atividadeView = new AtividadeView(
+            document.querySelector(".base")
+        );
+        this.#lista = lista;
 
-        this.abrirAtividade()
-        this._formController = new FormController()
-        this._configurarFormulario()
+        this.abrirAtividade();
+        this.#formController = new FormController();
+        this.#configurarFormulario();
     }
 
     abrirAtividade() {
-        this._atividadeView.renderizar(this._atividade)
+        this.#atividadeView.renderizar(this.#atividade);
     }
 
-    _editar(dados) {
-        this._atividade.titulo = dados.titulo
-        this._atividade.estado = dados.estado
-        this._atividade.descricao = dados.descricao
+    #editar(dados) {
+        this.#atividade.titulo = dados.titulo;
+        this.#atividade.estado = dados.estado;
+        this.#atividade.descricao = dados.descricao;
 
-        let novaLista = this._lista.map((atividade) => {
-            if (atividade.id == this._atividade.id) {
+        let novaLista = this.#lista.map((atividade) => {
+            if (atividade.id == this.#atividade.id) {
                 let novaAtividade = new Atividade(
                     atividade.id,
                     dados.titulo,
                     dados.estado,
                     dados.descricao
-                )
-                return novaAtividade
+                );
+                return novaAtividade;
             }
-            return atividade
-        })
-        localStorage.setItem("tarefas", JSON.stringify(novaLista))
+            return atividade;
+        });
 
-        this._atividadeView.renderizar(this._atividade)
+        let listJSON = novaLista.map((atividade) => {
+            return atividade.dados;
+        });
 
-        this._configurarFormulario()
+        localStorage.setItem("tarefas", JSON.stringify(listJSON));
+
+        this.#atividadeView.renderizar(this.#atividade);
+
+        this.#configurarFormulario();
     }
 
-    _excluir() {
-        let novaLista = this._lista.filter((atividade) =>
-            atividade.id != this._atividade.id ? true : false
-        )
-
-        localStorage.setItem("tarefas", JSON.stringify(novaLista))
-        window.location.reload()
+    #excluir() {
+        let novaLista = this.#lista.filter((atividade) =>
+            atividade.id != this.#atividade.id ? true : false
+        );
+        let listaJSON = novaLista.map((atividade) => {
+            return atividade.dados;
+        });
+        localStorage.setItem("tarefas", JSON.stringify(listaJSON));
+        window.location.reload();
     }
 
-    _configurarFormulario() {
-        this._formController.configurarSubmit((dados) => {
-            this._editar(dados)
-            this._formController.carregarForm()
-            this._configurarFormulario()
-        })
-        this._formController.configurarBtnFechar()
-        this._formController.configurarBtnCancelar(() => {
-            this._atividadeView.renderizar(this._atividade)
-            this._formController.carregarForm()
-            this._configurarFormulario()
-        }, this._atividade)
-        this._formController.configurarBtnExcluir(() => {
-            this._excluir()
-            this._formController.carregarForm()
-            this._configurarFormulario()
-        })
+    #configurarFormulario() {
+        this.#formController.configurarSubmit((dados) => {
+            this.#editar(dados);
+            this.#formController.carregarForm();
+            this.#configurarFormulario();
+        });
+        this.#formController.configurarBtnFechar();
+
+        this.#formController.configurarBtnCancelar(() => {
+            this.#atividadeView.renderizar(this.#atividade);
+            this.#formController.carregarForm();
+            this.#configurarFormulario();
+        }, this.#atividade);
+
+        this.#formController.configurarBtnExcluir(() => {
+            this.#excluir();
+            this.#formController.carregarForm();
+            this.#configurarFormulario();
+        });
     }
 }

@@ -7,10 +7,10 @@ export default class ListaAtividade {
                 ? listaInicial.map(
                       (tarefa) =>
                           new Atividade(
-                              tarefa._id,
-                              tarefa._titulo,
-                              tarefa._estado,
-                              tarefa._descricao
+                              tarefa.id,
+                              tarefa.titulo,
+                              tarefa.estado,
+                              tarefa.descricao
                           )
                   )
                 : []

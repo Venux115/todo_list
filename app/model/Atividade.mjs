@@ -1,41 +1,54 @@
 export default class Atividade {
-    constructor(id, titulo, estado, descricao=null) {
-        this._id = id
-        this._titulo = titulo
-        this._estado = estado
-        this._descricao = descricao
-        Object.freeze(Atividade)
+    #id;
+    #titulo;
+    #estado;
+    #descricao;
+    constructor(id, titulo, estado, descricao = null) {
+        this.#id = id;
+        this.#titulo = titulo;
+        this.#estado = estado;
+        this.#descricao = descricao;
+        Object.freeze(Atividade);
     }
 
     get id() {
-        return this._id
+        return this.#id;
     }
 
     get titulo() {
-        return this._titulo
+        return this.#titulo;
     }
 
     get estado() {
-        return this._estado
+        return this.#estado;
     }
 
-    get descricao(){
-        return this._descricao
+    get descricao() {
+        return this.#descricao;
     }
 
     set id(id) {
-        this._id = id
+        this.#id = id;
     }
 
     set titulo(titulo) {
-        this._titulo = titulo
+        this.#titulo = titulo;
     }
 
     set estado(estado) {
-        this._estado = estado
+        this.#estado = estado;
     }
 
     set descricao(descricao) {
-        this._descricao = descricao
+        this.#descricao = descricao;
+    }
+
+    get dados() {
+        return {
+            id: this.#id,
+            titulo: this.#titulo,
+            estado: this.#estado,
+            descricao: this.#descricao,
+        };
     }
 }

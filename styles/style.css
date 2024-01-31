@@ -258,3 +258,14 @@ body {
 .btn-close:hover {
     color: #d24545;
 }
+
+
+@media screen and (max-width:1000px) {
+    .container{
+        width: 100%;
+        margin: 1rem;
+    }
+    .form-principal{
+        padding: 0;
+    }
+}

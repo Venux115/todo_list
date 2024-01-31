@@ -6,6 +6,7 @@ export default class FormController {
     #$descricao;
     #$btnFechar;
     #$btnExcluir;
+
     constructor() {
         this.carregarForm();
     }

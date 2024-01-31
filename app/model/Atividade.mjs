@@ -3,6 +3,7 @@ export default class Atividade {
     #titulo;
     #estado;
     #descricao;
+
     constructor(id, titulo, estado, descricao = null) {
         this.#id = id;
         this.#titulo = titulo;
@@ -15,28 +16,28 @@ export default class Atividade {
         return this.#id;
     }
 
-    get titulo() {
-        return this.#titulo;
-    }
-
-    get estado() {
-        return this.#estado;
-    }
-
-    get descricao() {
-        return this.#descricao;
-    }
-
     set id(id) {
         this.#id = id;
+    }
+
+    get titulo() {
+        return this.#titulo;
     }
 
     set titulo(titulo) {
         this.#titulo = titulo;
     }
 
+    get estado() {
+        return this.#estado;
+    }
+
     set estado(estado) {
         this.#estado = estado;
+    }
+
+    get descricao() {
+        return this.#descricao;
     }
 
     set descricao(descricao) {

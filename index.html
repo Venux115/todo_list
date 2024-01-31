@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Todo List</title>
-        <link rel="stylesheet" href="styles/style.css" />
-        <link
-            rel="stylesheet"
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Todo List</title>
+    <link href="styles/style.css" rel="stylesheet"/>
+    <link
+            crossorigin="anonymous"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous"
             referrerpolicy="no-referrer"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<main class="container">
+    <h1>Todo List</h1>
+
+    <form class="form form-principal">
+        <div class="grupo-input">
+            <label for="nome-tarefa">Nova tarefa: </label><input
+                class="input-tarefa"
+                name="nome-tarefa"
+                id="nome-tarefa"
+                type="text"
         />
-    </head>
-    <body>
-        <main class="container">
-            <h1>Todo List</h1>
+        </div>
+        <button class="btn" type="submit">Adicionar tarefa</button>
+    </form>
+    <ul class="lista-tarefas"></ul>
+</main>
 
-            <form class="form form-principal">
-                <div class="grupo-input">
-                    <label for="nome-tarefa"> Nova tarefa: </label>
-                    <input
-                        type="text"
-                        name="nome-tarefa"
-                        class="input-tarefa"
-                    />
-                </div>
-                <button type="submit" class="btn">Adicionar tarefa</button>
-            </form>
-            <ul class="lista-tarefas"></ul>
-        </main>
-
-        <section class="base"></section>
-    </body>
-    <script type="module" src="app.js"></script>
+<section class="base"></section>
+</body>
+<script src="app.js" type="module"></script>
 </html>

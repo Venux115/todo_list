@@ -3,16 +3,16 @@ import Atividade from "./Atividade.mjs"
 export default class ListaAtividade {
     constructor(listaInicial = []) {
         this._lista =
-            (typeof listaInicial === "object") &&  listaInicial != null
+            (typeof listaInicial === "object") && listaInicial != null
                 ? listaInicial.map(
-                      (tarefa) =>
-                          new Atividade(
-                              tarefa.id,
-                              tarefa.titulo,
-                              tarefa.estado,
-                              tarefa.descricao
-                          )
-                  )
+                    (tarefa) =>
+                        new Atividade(
+                            tarefa.id,
+                            tarefa.titulo,
+                            tarefa.estado,
+                            tarefa.descricao
+                        )
+                )
                 : []
     }
 
@@ -21,7 +21,7 @@ export default class ListaAtividade {
     }
 
     set lista(atividade) {
-        
+
         this._lista = [...this._lista, atividade]
     }
 

@@ -45,7 +45,5 @@ export default class AtividadeView extends View {
     </section>`;
     }
 
-    desrenderizar(model) {
-        this._elemento.innerHTML -= this._template(model);
-    }
+
 }

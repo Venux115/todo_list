@@ -8,4 +8,6 @@ export default class View {
     renderizar(model) {
         this.#elemento.innerHTML = this.template(model);
     }
+
+
 }

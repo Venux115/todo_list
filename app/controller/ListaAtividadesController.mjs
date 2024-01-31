@@ -8,6 +8,7 @@ export default class ListaAtividadeController {
     #$listaTarefas;
     #listaAtividadeView;
     #listaTarefas;
+
     constructor() {
         const $ = document.querySelector.bind(document);
 
@@ -33,13 +34,12 @@ export default class ListaAtividadeController {
     }
 
     adicionarTarefa() {
-        const atividade = new Atividade(
+
+        this.#listaTarefas.lista = new Atividade(
             this.#listaTarefas.tamanho,
             this.#$inputTarefa.value,
             "nao iniciado"
         );
-
-        this.#listaTarefas.lista = atividade;
 
         let listaEmJson = this.#listaTarefas.lista.map((atividade) => {
             return atividade.dados;
@@ -63,7 +63,7 @@ export default class ListaAtividadeController {
                         return true;
                     }
                 });
-
+                console.log(atividade)
                 new AtividadeController(this.#listaTarefas.lista, ...atividade);
             });
         });

@@ -7,8 +7,9 @@ export default class AtividadeController {
     #atividadeView;
     #formController;
     #lista;
-    
-    constructor(lista, { id, titulo, estado, descricao }) {
+
+    constructor(lista, {id, titulo, estado, descricao}) {
+        console.log(arguments[1])
         this.#atividade = new Atividade(id, titulo, estado, descricao);
         this.#atividadeView = new AtividadeView(
             document.querySelector(".base")
@@ -30,14 +31,14 @@ export default class AtividadeController {
         this.#atividade.descricao = dados.descricao;
 
         let novaLista = this.#lista.map((atividade) => {
-            if (atividade.id == this.#atividade.id) {
-                let novaAtividade = new Atividade(
+            if (atividade.id === this.#atividade.id) {
+
+                return new Atividade(
                     atividade.id,
                     dados.titulo,
                     dados.estado,
                     dados.descricao
                 );
-                return novaAtividade;
             }
             return atividade;
         });
@@ -55,7 +56,7 @@ export default class AtividadeController {
 
     #excluir() {
         let novaLista = this.#lista.filter((atividade) =>
-            atividade.id != this.#atividade.id ? true : false
+            atividade.id !== this.#atividade.id
         );
         let listaJSON = novaLista.map((atividade) => {
             return atividade.dados;

@@ -9,7 +9,7 @@ export default class AtividadeView extends View {
             </button>
             <div class="grupo-input">
                 <label
-                    ><input
+                ><input
                         type="text"
                         name="input-nome-atividade"
                         class="input-nome-atividade"
@@ -21,7 +21,8 @@ export default class AtividadeView extends View {
                 <select name="input-status" id="input-status">
                     <option disable value="${model.estado}">${
             model.estado
-        }</option>
+        }
+                    </option>
                     <option value="nao-iniciado">Não iniciado</option>
                     <option value="em-andamento">Em andamento</option>
                     <option value="concluido">Concluído</option>
@@ -30,19 +31,23 @@ export default class AtividadeView extends View {
             <div class="grupo-input input-descricao">
                 <label for="input-descricao">Descrição</label>
                 <textarea
-                    name="input-descricao"
-                    id="input-descricao"
-                    cols="30"
-                    rows="10"
+                        name="input-descricao"
+                        id="input-descricao"
+                        cols="30"
+                        rows="10"
                 >${model.descricao || " "}</textarea>
             </div>
             <div class="grupo-botoes">
-                <button type="button" class="btn btn-cancelar">Cancelar</button>
-                <button type="submit" class="btn">Salvar</button>
+                <div id="grupo-botoes-editar">
+                    <button type="button" class="btn btn-cancelar">Cancelar</button>
+                    <button type="submit" class="btn">Salvar</button>
+                </div>
+
                 <button type="button" class="btn btn-excluir">Excluir</button>
             </div>
         </form>
-    </section>`;
+    </section>
+    `;
     }
 
 

@@ -8,6 +8,7 @@
     --cor-texto-dark: #000;
     --cor-texto-light: #f1f1f1;
     --color-model-dark: #2b2d42;
+    --cor-2: #d24545;
 }
 
 body {
@@ -137,7 +138,9 @@ body {
 }
 
 .btn {
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
+    min-width: 10rem;
     border: 4px solid var(--cor1);
     border-radius: 10px;
     padding: 1.5rem 0;
@@ -145,6 +148,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     background-color: transparent;
+    box-sizing: border-box;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -258,9 +262,31 @@ body {
 }
 
 .btn-close:hover {
-    color: #d24545;
+    color: var(--cor-2);
 }
 
+.grupo-botoes {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 2rem;
+    box-sizing: border-box;
+}
+
+#grupo-botoes-editar {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-excluir {
+    border-color: var(--cor-2);
+}
+
+.btn-excluir:hover {
+    background-color: var(--cor-2);
+}
 
 @media screen and (max-width: 1000px) {
     .container {
@@ -271,4 +297,18 @@ body {
     .form-principal {
         padding: 0;
     }
+}
+
+@media screen and (max-width: 750px) {
+    .grupo-botoes {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .btn-excluir {
+        max-width: 100%;
+    }
+
+
 }

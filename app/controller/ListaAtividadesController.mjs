@@ -15,6 +15,7 @@ export default class ListaAtividadeController {
         this.#$inputTarefa = $(".input-tarefa");
         this.#$listaTarefas = $(".lista-tarefas");
 
+
         let self = this;
         this.#listaAtividadeView = new ListaAtividadeView(this.#$listaTarefas);
         this.#listaTarefas = new Proxy(
@@ -34,20 +35,25 @@ export default class ListaAtividadeController {
     }
 
     adicionarTarefa() {
+        if (!this.#$inputTarefa.value){
+            alert("Tarefa em branco não pode ser adicionada.")
+        }else{
+            this.#listaTarefas.lista = new Atividade(
+                this.#listaTarefas.tamanho,
+                this.#$inputTarefa.value,
+                "nao iniciado"
+            );
 
-        this.#listaTarefas.lista = new Atividade(
-            this.#listaTarefas.tamanho,
-            this.#$inputTarefa.value,
-            "nao iniciado"
-        );
+            let listaEmJson = this.#listaTarefas.lista.map((atividade) => {
+                return atividade.dados;
+            });
 
-        let listaEmJson = this.#listaTarefas.lista.map((atividade) => {
-            return atividade.dados;
-        });
+            localStorage.setItem("tarefas", JSON.stringify(listaEmJson));
 
-        localStorage.setItem("tarefas", JSON.stringify(listaEmJson));
+            this._adicionarClick();
+        }
 
-        this._adicionarClick();
+
     }
 
     _adicionarClick() {

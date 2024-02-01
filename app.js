@@ -8,5 +8,12 @@ const $form = $("form")
 
 $form.addEventListener("submit", (evento) => {
     evento.preventDefault()
+    verificaFormulario(evento)
     AtividadeController.adicionarTarefa()
 })
+
+function  verificaFormulario(input){
+    if (input){
+        return true
+    }
+}
